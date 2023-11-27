@@ -66,7 +66,7 @@ const SignupScreen = ({ navigation }) => {
             firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then((userCredentials) => {
 
-                    // console.log(userCredentials?.user.uid);
+
                     console.log("user Created");
 
                     if (userCredentials?.user.uid) {
@@ -83,17 +83,17 @@ const SignupScreen = ({ navigation }) => {
 
 
 
+                            }).then(() => {
+
+                                console.log("Data Added to FireStore")
+                                setSucessmsg("User Created Successfully")
+                            }).catch((error) => {
+                                console.log("FireBase error", error);
+                                setCustomError("Invalid Email")
+                                setSucessmsg("User Created Successfully")
                             }
-                        ).then(() => {
 
-                            console.log("Data Added to FireStore")
-                            setSucessmsg("User Created Successfully")
-                        }).catch((error) => {
-                            console.log("FireBase error", error);
-                            setCustomError("Invalid Email")
-                        }
-
-                        )
+                            )
                     }
 
 
@@ -116,7 +116,7 @@ const SignupScreen = ({ navigation }) => {
 
         }
         catch (error) {
-            console.log("sign up sydtem error", error.message);
+            console.log("sign up system error", error.message);
 
 
         }
@@ -224,6 +224,11 @@ const SignupScreen = ({ navigation }) => {
                     <TouchableOpacity style={btn1} onPress={() => navigation.navigate('Login')} >
                         <Text style={{ color: colors.col1, fontSize: titles.btntext, fontWeight: 'bold' }}>Login</Text>
                     </TouchableOpacity>
+
+                    <TouchableOpacity style={btn1} onPress={() => navigation.navigate('welcomepage')} >
+                        <Text style={{ color: colors.col1, fontSize: titles.btntext, fontWeight: 'bold' }}>Welcome Page</Text>
+                    </TouchableOpacity>
+
                     <TouchableOpacity style={btn1} onPress={() => setSucessmsg(null)} >
                         <Text style={{ color: colors.col1, fontSize: titles.btntext, fontWeight: 'bold' }}>Go Back</Text>
                     </TouchableOpacity>

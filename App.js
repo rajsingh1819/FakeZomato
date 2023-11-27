@@ -34,12 +34,6 @@ export default function App() {
 
 
 
-    // < AuthNavigation />
-
-
-    // < LoginScreen />
-    // <RootNavigation />
-    // <HomeScreen />
 
 
 
